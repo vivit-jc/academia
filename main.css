@@ -1,0 +1,188 @@
+* {
+  box-sizing: border-box;
+}
+#app {
+  /*max-width: 640px;*/
+  margin: 0 auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+thead th {
+  border-bottom: 2px solid #0099e4; /*#d31c4a */
+  color: #0099e4;
+}
+th,
+th {
+  padding: 0 8px;
+  line-height: 40px;
+}
+thead th.id {
+  width: 50px;
+}
+thead th.state {
+  width: 100px;
+}
+thead th.button {
+  width: 60px;
+}
+tbody td.button, tbody td.state {
+  text-align: center;
+}
+tbody tr td,
+tbody tr th {
+  border-bottom: 1px solid #ccc;
+  transition: all 0.4s;
+}
+tbody tr.done td,
+tbody tr.done th {
+  background: #f8f8f8;
+  color: #bbb;
+}
+tbody tr:hover td,
+tbody tr:hover th {
+  background: #f4fbff;
+}
+
+button {
+  border: none;
+  border-radius: 20px;
+  line-height: 24px;
+  padding: 0 8px;
+  background: #0099e4;
+  color: #fff;
+  cursor: pointer;
+  margin: 3px !important;
+}
+
+h1: {
+  text-align: center;
+}
+
+.space {
+  border: 2px solid;
+  padding: 6px;
+}
+.card {
+
+}
+.des {
+  font-size: 12px;
+}
+
+.die {
+  height: 40px;
+}
+
+.market {
+  background-color: #f8e58c !important;
+}
+
+.vendor{
+  background-color: #c1e4e9 !important;
+}
+
+.merchant{
+  background-color: #bbbcde !important;
+}
+
+.animal_vendor{
+  background-color: #f6b894 !important;
+}
+
+.seed_vendor{
+  background-color: #badcad !important;
+}
+
+.food_vendor{
+  background-color: #b28c6e !important;
+}
+
+.hover {
+  background-color: #cccccc !important;
+}
+
+.selected {
+  background-color: #999999 !important;
+}
+
+.hold {
+  background-color: #0000ff !important;
+}
+
+.passive {
+  background-color: #cccccc !important;
+}
+
+.red {
+  color: red;
+}
+
+.action {
+  width: 110px;
+}
+
+.worker {
+  width: 120px;
+}
+
+.facility {
+  width: 120px;
+}
+
+.vendor_dice {
+  height: 30px;
+}
+
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+  margin-right: 60px;
+}
+
+.recent {
+  background-color: #f8e58c !important;
+}
+
+#action_space{
+
+}
+
+#farm_space{
+  min-height: 120px;
+}
+
+#worker_space{
+  min-height: 120px;
+}
+
+.vp_list {
+  background-color: #bce2e8 !important;
+}
+
+.v-leave-active {
+    transition: opacity 3s;
+}
+
+.v-leave {
+    opacity: 1;
+}
+
+.v-leave-to {
+    opacity: 0;
+}
+
+.badge {
+  width: 80px !important;
+  font-size: 18px !important;
+  z-index: 1;
+}
+
+.badge-wide {
+  width: 300px !important;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Academia(仮)</title>
+  <link rel="stylesheet" href="./main.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+  <div id="app">
+    <h1 class="center">Academia</h1>
+    
+    <div class="right">
+      制作：vivit_jc
+      <a href="https://twitter.com/vivit_jc">Twitter</a>&nbsp;
+      <a href="https://github.com/vivit-jc/dicey_farm">GitHub</a>
+    </div>
+    <transition>
+      <div class="alert alert-danger fade show center" id="alertmsg" role="alert" v-show="showAlert">{{alert_str}}</div>
+    </transition>
+    <div class="center"  v-show="viewStatus==='howtoplay'">
+      <button type="button" @click="returnGame" class="btn btn-secondary btn-sm">ゲームに戻る</button><br>
+      <img src="info.jpg">
+    </div>
+    <div class="container"  v-show="viewStatus==='game'">
+      <div class="row">
+        <div class="col-12 col-lg-2 space" id="resources_space">
+          <button type="button" @click="showHowToPlay" class="btn btn-secondary btn-sm">遊び方</button>
+          <button type="button" @click="showRules" class="btn btn-secondary btn-sm">ルール説明</button>
+          <button type="button" @click="showBeta" v-show="beta" class="btn btn-secondary btn-sm">β変更点</button>
+          <button type="button" @click="showUpdates" v-show="!beta" class="btn btn-secondary btn-sm">変更履歴</button>
+          <ul class="list-group">
+            <li class="list-group-item" v-for="com in commands">
+              {{com}}
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-10">
+          <div class="row space">
+            
+          </div>
+          <div class="row space">
+            
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://chancejs.com/chance.min.js"></script>
+  <script src="./main.js"></script>
+</body>
+</html>
