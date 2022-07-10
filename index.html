@@ -30,19 +30,33 @@
           <button type="button" @click="showBeta" v-show="beta" class="btn btn-secondary btn-sm">β変更点</button>
           <button type="button" @click="showUpdates" v-show="!beta" class="btn btn-secondary btn-sm">変更履歴</button>
           <ul class="list-group">
-            <li class="list-group-item" v-for="com in commands">
+            <li class="list-group-item command" v-for="com in commands">
               {{com}}
             </li>
           </ul>
         </div>
-        <div class="col-lg-10">
+        <div class="col-lg-10 main">
           <div class="row space">
+            <div class="col-3">
+              <img src="img/cauldron.png">
+            </div>
+            <div class="col-3">
+              <img src="img/mushroom.png" class="material">
+            </div>
             
           </div>
           <div class="row space">
-            
+            <div class="col-6" v-for="material in materials" v-bind:class="[{hover:onMaterial===material.name},{}]" @mouseover="onMaterial=material.name" @mouseout="onMaterial=''" v-on:click="clickMaterial(material.name)">
+              <img :src=mat_img(material.src) class="material">
+              {{material.name}}({{material.known}}) x{{material.num}}
+              <button type="button" class="rounded-pill btn-sm">入れる</button>
+              <button type="button" class="rounded-pill btn-sm">ノート</button>
+              
+            </div>
           </div>
-
+          <div class="row message space">
+            {{msg}}
+          </div>
         </div>
       </div>
     </div>

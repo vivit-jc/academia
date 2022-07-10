@@ -4,7 +4,14 @@ const app = {
   data() {
     return {
       viewStatus: "game",
-      commands: ["a","b","c","d"]
+      onMaterial: "",
+      commands: ["調合","外出","ノート","論文","素材","薬棚・使い魔","ヘルプ"],
+      materials: [
+        {name: "キノコ",src: "mushroom", known: "?", num: 2},
+        {name: "カエル",src: "frog", known: "?", num: 4},
+        {name: "枝",src: "branches", known: "水-風?", num: 1},
+        {name: "葉っぱ",src: "leaves", known: "土-光", num: 3}],
+      msg: "調合する素材を選んでください。"
     }
   },
 
@@ -35,7 +42,10 @@ const app = {
     },
     initGame() {
 
-    }
+    },
+    mat_img(src) {
+      return "img/"+src+".png"
+    },
   }
 }
 
