@@ -22,34 +22,41 @@
       <button type="button" @click="returnGame" class="btn btn-secondary btn-sm">ゲームに戻る</button><br>
       <img src="info.jpg">
     </div>
-    <div class="container"  v-show="viewStatus==='game'">
+    <div class="container main" v-show="viewStatus==='game'">
       <div class="row">
-        <div class="col-12 col-lg-2 space" id="resources_space">
+        <div class="col-12 col-lg-2 space" id="commands">
           <button type="button" @click="showHowToPlay" class="btn btn-secondary btn-sm">遊び方</button>
           <button type="button" @click="showRules" class="btn btn-secondary btn-sm">ルール説明</button>
           <button type="button" @click="showBeta" v-show="beta" class="btn btn-secondary btn-sm">β変更点</button>
           <button type="button" @click="showUpdates" v-show="!beta" class="btn btn-secondary btn-sm">変更履歴</button>
           <ul class="list-group">
-            <li class="list-group-item command" v-for="com in commands">
-              {{com}}
+            <li class="list-group-item command" v-for="command in commands" v-bind:class="[{hover:onCommand===command},{}]" @mouseover="onCommand=command" @mouseout="onCommand=''" v-on:click="clickCommand(command)">
+              {{command}}
             </li>
           </ul>
         </div>
-        <div class="col-lg-10 main">
+        <div class="col-lg-10">
           <div class="row space">
             <div class="col-3">
-              <img src="img/cauldron.png">
+              <img src="img/cauldron.png"><br>
+              <button type="button" class="rounded-pill btn-sm" v-show="cauldron.length==2" @click="make_potion">調合</button>
             </div>
-            <div class="col-3">
-              <img src="img/mushroom.png" class="material">
+            <div class="col-3" >
+              <ul class="list-group">
+                <li class="list-group-item cauldron" v-for="m in cauldron">
+                  <img :src="mat_img(m)" class="material">
+                  {{ele_j(m.ele)}}
+                  <button type="button" class="btn-close" aria-label="Close" @click="deleteCauldron(m)"></button>
+                </li>
+              </ul>
             </div>
             
           </div>
           <div class="row space">
-            <div class="col-6" v-for="material in materials" v-bind:class="[{hover:onMaterial===material.name},{}]" @mouseover="onMaterial=material.name" @mouseout="onMaterial=''" v-on:click="clickMaterial(material.name)">
-              <img :src=mat_img(material.src) class="material">
-              {{material.name}}({{material.known}}) x{{material.num}}
-              <button type="button" class="rounded-pill btn-sm">入れる</button>
+            <div class="col-6" v-for="m in materials" v-show="m.num>0" v-bind:class="[{hover:onMaterial===m.name},{}]" @mouseover="onMaterial=m.name" @mouseout="onMaterial=''">
+              <img :src=mat_img(m) class="material">
+              {{m.name}}({{ele_j(m.ele)}}) x{{m.num}}
+              <button type="button" class="rounded-pill btn-sm" v-bind:class="{'btn-secondary':!settable(m)}" @click="clickMaterialCommand(m)">入れる</button>
               <button type="button" class="rounded-pill btn-sm">ノート</button>
               
             </div>

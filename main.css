@@ -60,22 +60,25 @@ h1: {
   text-align: center;
 }
 
-.space {
-  border: 2px solid;
-  padding: 6px;
+#commands {
+
+}
+
+.command {
+  background-color: #d8e698 !important;
 }
 
 .material {
   height: 30px;
 }
 
-.message {
-  height: 300px;
-  padding: auto;
+.space {
+  border: 2px solid;
+  padding: 6px;
 }
 
-.command {
-  background-color: #d8e698 !important;
+.message {
+
 }
 
 .hover {
@@ -108,7 +111,16 @@ h1: {
 }
 
 .main {
-  height: 415px;
+
+}
+
+.cauldron {
+  position: relative;
+}
+
+.btn-close {
+  position: absolute;
+  right: 0;
 }
 
 .v-leave-active {
