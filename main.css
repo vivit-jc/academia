@@ -118,6 +118,10 @@ h1: {
   position: relative;
 }
 
+.warn {
+  font-size: small;
+}
+
 .btn-close {
   position: absolute;
   right: 0;
@@ -136,8 +140,8 @@ h1: {
 }
 
 .badge {
-  width: 80px !important;
-  font-size: 18px !important;
+/*  width: 80px !important;*/
+/*  font-size: 18px !important;*/
   z-index: 1;
 }
 

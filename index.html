@@ -30,18 +30,20 @@
           <button type="button" @click="showBeta" v-show="beta" class="btn btn-secondary btn-sm">β変更点</button>
           <button type="button" @click="showUpdates" v-show="!beta" class="btn btn-secondary btn-sm">変更履歴</button>
           <ul class="list-group">
-            <li class="list-group-item command" v-for="command in commands" v-bind:class="[{hover:onCommand===command},{}]" @mouseover="onCommand=command" @mouseout="onCommand=''" v-on:click="clickCommand(command)">
+            <li class="list-group-item command" v-for="command in commands" v-bind:class="[{hover:onCommand===command},{}]" @mouseover="onCommand=command" @mouseout="onCommand=''" @click="clickCommand(command)">
               {{command}}
+              <span class="badge rounded-pill bg-info text-dark" v-if="command==='ノート'">{{notes.length}}</span>
             </li>
           </ul>
         </div>
         <div class="col-lg-10">
-          <div class="row space">
+          <div class="row space" v-show="gameStatus==='make_potion'">
             <div class="col-3">
               <img src="img/cauldron.png"><br>
               <button type="button" class="rounded-pill btn-sm" v-show="cauldron.length==2" @click="make_potion">調合</button>
+              <p class="warn" v-show="search_notes">この組み合わせで調合したことがあります</p>
             </div>
-            <div class="col-3" >
+            <div class="col-3">
               <ul class="list-group">
                 <li class="list-group-item cauldron" v-for="m in cauldron">
                   <img :src="mat_img(m)" class="material">
@@ -52,7 +54,7 @@
             </div>
             
           </div>
-          <div class="row space">
+          <div class="row space" v-show="gameStatus==='make_potion'">
             <div class="col-6" v-for="m in materials" v-show="m.num>0" v-bind:class="[{hover:onMaterial===m.name},{}]" @mouseover="onMaterial=m.name" @mouseout="onMaterial=''">
               <img :src=mat_img(m) class="material">
               {{m.name}}({{ele_j(m.ele)}}) x{{m.num}}
@@ -61,8 +63,19 @@
               
             </div>
           </div>
+          <div class="row space" v-show="gameStatus==='notes'">
+            <p v-for="m in noteMsg">{{m}}</p>
+          </div>
+          <div class="row space" v-show="gameStatus==='notes'">
+            <div class="col-6" v-for="n in notes" v-bind:class="[{hover:onNote===n},{}]" @mouseover="onNote=n" @mouseout="onNote=''" @click="clickNote(n)">
+              実験：
+              <img :src=mat_img(get_m_from_name(n.materials[0])) class="material">+
+              <img :src=mat_img(get_m_from_name(n.materials[1])) class="material">
+
+            </div>
+          </div>
           <div class="row message space">
-            {{msg}}
+            <p v-for="m in msg">{{m}}</p>
           </div>
         </div>
       </div>
